@@ -1,0 +1,46 @@
+{
+  "name": "relay-modern-playground",
+  "version": "1.0.0",
+  "description": "Relay Modern playground",
+  "main": "server/index.js",
+  "scripts": {
+    "prestart": "npm run build",
+    "start": "npm run start:server & npm run start:client",
+    "start:server": "nodemon -w graphql -w server server/bin/server",
+    "start:client": "webpack-dev-server --config client/webpack.config.js -d",
+    "build": "npm run build:schema && npm run build:relay",
+    "build:schema": "graphql-introspect graphql/schema.js > graphql/schema.graphql",
+    "build:relay": "relay-compiler --src client/src --schema graphql/schema.graphql"
+  },
+  "keywords": [],
+  "author": "Sergey Elsukov <oct8cat@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-plugin-relay": "^1.0.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "cors": "^2.8.3",
+    "express": "^4.15.3",
+    "express-graphql": "^0.6.5",
+    "graphql": "^0.9.6",
+    "graphql-introspect": "^1.0.0",
+    "nodemon": "^1.11.0",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-relay": "^1.0.0",
+    "relay-compiler": "^1.0.0",
+    "webpack": "^2.6.0",
+    "webpack-dev-server": "^2.4.5"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/oct8cat/relay-modern-playground.git"
+  },
+  "bugs": {
+    "url": "https://github.com/oct8cat/relay-modern-playground/issues"
+  },
+  "homepage": "https://github.com/oct8cat/relay-modern-playground#readme"
+}
