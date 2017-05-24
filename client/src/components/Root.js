@@ -1,7 +1,7 @@
 const React = require('react')
 const {QueryRenderer, graphql} = require('react-relay')
 const App = require('./App')
-const environment = require('../relay/environment')
+const {environment} = require('../relay/environment')
 
 const Root = () => {
   const query = graphql`
